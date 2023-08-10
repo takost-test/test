@@ -1,6 +1,10 @@
 name: other
 on:
   workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
     secrets:
       TEST_TOKEN: 
         required: true
@@ -13,6 +17,7 @@ permissions:
 jobs:
   e2e:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
