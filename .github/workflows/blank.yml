@@ -7,7 +7,7 @@ permissions:
 jobs:
   test-token:
     needs: build
-    uses: ./.github/workflows/test2.yml@main
+    uses: ./.github/workflows/test2.yml
     secrets:
       TEST_TOKEN: '${{ secrets.TEST_TOKEN }}'
   build:
