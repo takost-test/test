@@ -5,21 +5,16 @@ permissions:
   id-token: write
   contents: write
 jobs:
-  test-token:
-    needs: build
+  test-token_1:
     uses: ./.github/workflows/test2.yml
+    with: 
+      environment: test_1
     secrets:
       TEST_TOKEN: '${{ secrets.TEST_TOKEN }}'
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      
+  test-token_2:
+    uses: ./.github/workflows/test2.yml
+    with: 
+      environment: test_2
+    secrets:
+      TEST_TOKEN: '${{ secrets.TEST_TOKEN }}'
